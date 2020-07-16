@@ -22,6 +22,7 @@ def scrape():
     news_p=news_p[2]
 
     #scraping featured image
+    time.sleep(1)
     browser= webdriver.Chrome('chromedriver.exe')
     browser.get('https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars')
     button=browser.find_element_by_link_text("FULL IMAGE")
@@ -32,12 +33,15 @@ def scrape():
     featured_image_url=picture.get_attribute('src')
 
     #get tweet
+    time.sleep(5)
     browser= webdriver.Chrome('chromedriver.exe')
     browser.get('https://twitter.com/marswxreport?lang=en')
+    time.sleep(5)
     tweet=browser.find_element_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div/div/div/div[2]/section/div/div/div/div[1]/div/div/article/div/div/div/div[2]/div[2]/div[2]')
     mars_weather=tweet.text
 
     #get pandas table
+    time.sleep(1)
     tables = pd.read_html('https://space-facts.com/mars/')
     df=tables[0]
     df.columns=['Record', 'Measurement']
@@ -45,6 +49,7 @@ def scrape():
     html_table=df.to_html()
 
     #get images of hemispheres
+    time.sleep(1)
     browser= webdriver.Chrome('chromedriver.exe')
     browser.get('https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars')
     links=browser.find_elements_by_class_name('itemLink')
@@ -61,3 +66,11 @@ def scrape():
 
     #final dictionary
     scrape_dict={"news_title":news_title,"featured_image_url": featured_image_url, "mars_weather": mars_weather, "html_table": html_table, "hemisphere_image_urls":hemisphere_image_urls}
+
+    #plug it into mongo
+    conn='mongodb://localhost:27017'
+    client=pymongo.MongoClient(conn)
+    db=client.mars_db
+    mars_info = db.mars
+    db.mars.drop()
+    db.mars.insert_one(scrape_dict)

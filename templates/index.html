@@ -29,14 +29,11 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Latest Mars News</h1>
-        
+        {% for item in data %}
         <h2> 
-          {% for item in data %}
-          {{ data.player }}
-        
-          {% endfor %}
+          {{ item.news_title }}
         </h2>
-       
+       {% endfor %}
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt optio provident tempora amet, eveniet et, eum illum, culpa laborum dicta recusandae magni architecto. Illo saepe facilis, unde. Debitis, atque, doloremque?</p>
       </div>
