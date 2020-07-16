@@ -14,13 +14,13 @@ def scrape():
     news_url='https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     response=requests.get(news_url)
     soup=BeautifulSoup(response.text,'html.parser')
-    news_title=soup.find_all('div', class_='rollover_description_inner')[0].text
-    news_title=news_title.split('\n')
-    news_title=news_title[1]
-
-    news_p=soup.find_all('div', class_='content_title')[0].text
+    news_p=soup.find_all('div', class_='rollover_description_inner')[0].text
     news_p=news_p.split('\n')
-    news_p=news_p[2]
+    news_p=news_p[1]
+
+    news_title=soup.find_all('div', class_='content_title')[0].text
+    news_title=news_title.split('\n')
+    news_title=news_title[2]
 
     #scraping featured image
     time.sleep(1)
@@ -66,7 +66,7 @@ def scrape():
     hemisphere_image_urls = {title_list[i]: url_list[i] for i in range(len(title_list))} 
 
     #final dictionary
-    scrape_dict={"news_title":news_title,"featured_image_url": featured_image_url, "mars_weather": mars_weather, "html_table": html_table, "hemisphere_image_urls":hemisphere_image_urls}
+    scrape_dict={"news_title":news_title,"news_p":news_p,"featured_image_url": featured_image_url, "mars_weather": mars_weather, "html_table": html_table, "hemisphere_image_urls":hemisphere_image_urls}
 
     #plug it into mongo
     conn='mongodb://localhost:27017'

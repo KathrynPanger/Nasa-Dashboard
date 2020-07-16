@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-md-12">
           <div class="bigbox">
-              <h1 class="center">{{text}}</h1>
+              <h1 class="center">Mission to Mars</h1>
             <button type="button" class="center">Scrape New Data</button> 
           </div>
       </div>
@@ -35,14 +35,21 @@
         </h2>
        {% endfor %}
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt optio provident tempora amet, eveniet et, eum illum, culpa laborum dicta recusandae magni architecto. Illo saepe facilis, unde. Debitis, atque, doloremque?</p>
+       {% for item in data %}
+        <p>{{item.news_p}}</p>
+       {% endfor %}
       </div>
     </div>
 
     <!-- Row 3 -->
     <div class="row">
       <div class="col-md-9">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+        
+        {% for item in data %}
+        <img src= {{ item.featured_image_url }}>
+        {% endfor %}
+          
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
       </div>
       <div class="col-md-3">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>

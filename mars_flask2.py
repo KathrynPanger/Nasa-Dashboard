@@ -19,7 +19,7 @@ mars_info = db.mars
 def home():
     mongolist=list(db.mars.find())
     print(mongolist)
-    return render_template("index.html",text="Mission to Mars?", data=mongolist)
+    return render_template("index.html", data=mongolist)
 
 
 
