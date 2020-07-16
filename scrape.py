@@ -8,6 +8,7 @@ def scrape():
     from selenium.webdriver.common.keys import Keys
     import pandas as pd
     import time
+    import pymongo
 
     #scraping the news
     news_url='https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
