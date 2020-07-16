@@ -52,7 +52,11 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
       </div>
       <div class="col-md-3">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+
+        {%for item in data%}
+        <p>{{ item.mars_weather }}</p>
+        {%endfor%}
+
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
       </div>
     
