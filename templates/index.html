@@ -20,7 +20,7 @@
       <div class="col-md-12">
           <div class="bigbox">
               <h1 class="center">Mission to Mars</h1>
-            <button type="button" class="center">Scrape New Data</button> 
+            <button onclick=window.location.reload(); type="button" class="center">Scrape New Data</button> 
           </div>
       </div>
     </div>
@@ -46,10 +46,10 @@
       <div class="col-md-9">
         
         {% for item in data %}
-        <img src= {{ item.featured_image_url }}>
+        <img src= {{ item.featured_image_url }} class="img-fluid">
         {% endfor %}
           
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+          
       </div>
       <div class="col-md-3">
 
@@ -57,7 +57,10 @@
         <p>{{ item.mars_weather }}</p>
         {%endfor%}
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+        {%for item in data%}
+        {{ item.html_table | safe }}
+        {%endfor%}
+        
       </div>
     
     </div>
@@ -65,7 +68,7 @@
     <!-- Row 4 -->
     <div class="row">
       <div class="col-md-12">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti illo voluptates blanditiis nisi! Ullam dolore aspernatur, ratione error similique veniam iusto, labore repellat eaque nostrum optio doloribus illo nihil dolor?</p>
+        <h2 style="text-align:center">Mars Hemispheres</h2>
       </div>
   </div>
 
@@ -73,10 +76,14 @@
     <!-- Row 5 -->
     <div class="row">
         <div class="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti illo voluptates blanditiis nisi! Ullam dolore aspernatur, ratione error similique veniam iusto, labore repellat eaque nostrum optio doloribus illo nihil dolor?</p>
+          {%for item in data%}
+          <img src= {{ item.hemisphere_image_urls[0] }} class="img-fluid">
+          {%endfor%}
         </div>
         <div class="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi sequi ex quam quia iste, nemo molestias dolor, qui dolorem voluptatibus ipsa maxime voluptas et deserunt porro repellendus veritatis nesciunt quisquam.</p>
+          {%for item in data%}
+          <img src= {{ item.hemisphere_image_urls[1] }} class="img-fluid">
+          {%endfor%}
         </div>
       </div>
 
@@ -84,10 +91,14 @@
     <!-- Row 6 -->
     <div class="row">
         <div class="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti illo voluptates blanditiis nisi! Ullam dolore aspernatur, ratione error similique veniam iusto, labore repellat eaque nostrum optio doloribus illo nihil dolor?</p>
+          {%for item in data%}
+          <img src= {{ item.hemisphere_image_urls[2] }} class="img-fluid">
+          {%endfor%}
         </div>
         <div class="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi sequi ex quam quia iste, nemo molestias dolor, qui dolorem voluptatibus ipsa maxime voluptas et deserunt porro repellendus veritatis nesciunt quisquam.</p>
+          {%for item in data%}
+          <img src= {{ item.hemisphere_image_urls[3] }} class="img-fluid">
+          {%endfor%}
         </div>
       </div>
     </div>

@@ -63,7 +63,23 @@ def scrape():
         url_list.append(url)
     url_list=url_list[1::2]
     title_list=title_list[1::2]
-    hemisphere_image_urls = {title_list[i]: url_list[i] for i in range(len(title_list))} 
+    hemisphere_get_urls = {title_list[i]: url_list[i] for i in range(len(title_list))}
+
+    hemisphere_image_urls=[]
+    temp_urls=[]
+    values=hemisphere_get_urls.values()
+    for value in values:
+        temp_urls.append(value)
+    for url in temp_urls:
+        browser.get(url)
+        button=browser.find_element_by_link_text("Sample")
+        button.click()
+        picture=browser.find_elements_by_tag_name('img')
+        for item in picture:
+            if "full" in item.get_attribute('src'):
+                hemisphere_image_urls.append((item.get_attribute('src')))
+
+    
 
     #final dictionary
     scrape_dict={"news_title":news_title,"news_p":news_p,"featured_image_url": featured_image_url, "mars_weather": mars_weather, "html_table": html_table, "hemisphere_image_urls":hemisphere_image_urls}
