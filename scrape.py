@@ -35,7 +35,6 @@ def scrape():
 
     #get tweet
     time.sleep(5)
-    browser= webdriver.Chrome('chromedriver.exe')
     browser.get('https://twitter.com/marswxreport?lang=en')
     time.sleep(5)
     tweet=browser.find_element_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div/div/div/div[2]/section/div/div/div/div[1]/div/div/article/div/div/div/div[2]/div[2]/div[2]')
@@ -51,7 +50,6 @@ def scrape():
 
     #get images of hemispheres
     time.sleep(1)
-    browser= webdriver.Chrome('chromedriver.exe')
     browser.get('https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars')
     links=browser.find_elements_by_class_name('itemLink')
     url_list=[]
