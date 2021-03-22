@@ -19,13 +19,6 @@ This project creates a dashboard of information scraped from NASA's website and 
 |+--web.py-> flask app to display web page
 |+--wind.html
 
-```
-
-## Examples:
-
- ![Vizualization Preview](tempcompare.png)
- ![Vizualization Preview](visualizations.png)
- ![Vizualization Preview](main_page.png)
 
 
 
